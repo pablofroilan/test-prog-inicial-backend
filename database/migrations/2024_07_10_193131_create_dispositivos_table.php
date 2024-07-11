@@ -17,10 +17,16 @@ return new class extends Migration
             $table->string('dispositivo_nombre');
             //Definición de clave foránea modelo_id
             $table->integer('modelo_id')->unsigned();
-            $table->foreign('modelo_id')->references('modelo_id')->on('modelos');
+            $table->foreign('modelo_id')
+                ->references('modelo_id')
+                ->on('modelos')
+                ->onDelete('cascade');
             //Definición de clave foránea bodega_id
             $table->integer('bodega_id')->unsigned();
-            $table->foreign('bodega_id')->references('bodega_id')->on('bodegas');
+            $table->foreign('bodega_id')
+                ->references('bodega_id')
+                ->on('bodegas')
+                ->onDelete('cascade');
             //$table->timestamps();
         });
     }

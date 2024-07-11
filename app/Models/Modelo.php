@@ -12,4 +12,14 @@ class Modelo extends Model
     protected $primaryKey = 'modelo_id';
 
     public $timestamps = false;
+
+    //Relacion con Marca
+    public function marca() {
+        return $this->belongsTo(Marca::class, 'marca_id', 'modelo_id');
+    }
+
+    //Relacion con Dispositivo
+    public function dispositivos() {
+        return $this->hasMany(Dispositivo::class, 'modelo_id', 'dispositivo_id');
+    }
 }

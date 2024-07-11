@@ -12,4 +12,9 @@ class Bodega extends Model
     protected $primaryKey = 'bodega_id';
 
     public $timestamps = false;
+
+    //Relacion con Dispositivo
+    public function dispositivos() {
+        return $this->hasMany(Dispositivo::class, 'bodega_id', 'dispositivo_id');
+    }
 }

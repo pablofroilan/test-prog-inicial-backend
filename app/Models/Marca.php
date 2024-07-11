@@ -12,4 +12,9 @@ class Marca extends Model
     protected $primaryKey = 'marca_id';
 
     public $timestamps = false;
+
+    //Relacion con modelo
+     public function modelos() {
+        return $this->hasMany(Modelo::class, 'marca_id', 'modelo_id');
+     }
 }

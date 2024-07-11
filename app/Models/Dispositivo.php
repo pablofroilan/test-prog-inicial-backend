@@ -12,4 +12,13 @@ class Dispositivo extends Model
     protected $primaryKey = 'dispositivo_id';
 
     public $timestamps = false;
+    
+    //Relación con Bodega
+    public function modelo() {
+        return $this->belongsTo(Modelo::class, 'modelo_id', 'dispositivo_id');
+    }
+    //Relación con Modelo
+    public function bodega() {
+        return $this->belongsTo(Bodega::class, 'bodega_id', 'dispositivo_id');
+    }
 }

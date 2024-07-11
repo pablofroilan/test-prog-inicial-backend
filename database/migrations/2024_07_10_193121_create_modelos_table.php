@@ -17,7 +17,10 @@ return new class extends Migration
             $table->string('modelo_nombre')->unique();
             //Definicion de clave foranea
             $table->integer('marca_id')->unsigned();
-            $table->foreign('marca_id')->references('marca_id')->on('marcas');
+            $table->foreign('marca_id')
+                ->references('marca_id')
+                ->on('marcas')
+                ->onDelete('cascade');
             //$table->timestamps();
         });
     }
