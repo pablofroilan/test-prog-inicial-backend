@@ -11,9 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
+        //Crear tabla dispositivos
         Schema::create('dispositivos', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->id('dispositivo_id');
+            $table->string('dispositivo_nombre');
+            //Definición de clave foránea modelo_id
+            $table->integer('modelo_id')->unsigned();
+            $table->foreign('modelo_id')->references('modelo_id')->on('modelos');
+            //Definición de clave foránea bodega_id
+            $table->integer('bodega_id')->unsigned();
+            $table->foreign('bodega_id')->references('bodega_id')->on('bodegas');
+            //$table->timestamps();
         });
     }
 

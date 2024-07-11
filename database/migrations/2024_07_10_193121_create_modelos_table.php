@@ -11,10 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //Crear tabla bodegas
-        Schema::create('bodegas', function (Blueprint $table) {
-            $table->id('bodega_id');
-            $table->string('bodega_nombre')->unique();
+        //Crear tabla modelos
+        Schema::create('modelos', function (Blueprint $table) {
+            $table->id('modelo_id');
+            $table->string('modelo_nombre')->unique();
+            //Definicion de clave foranea
+            $table->integer('marca_id')->unsigned();
+            $table->foreign('marca_id')->references('marca_id')->on('marcas');
             //$table->timestamps();
         });
     }
@@ -24,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('bodegas');
+        Schema::dropIfExists('modelos');
     }
 };
