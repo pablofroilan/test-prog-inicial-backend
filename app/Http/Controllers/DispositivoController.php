@@ -23,8 +23,8 @@ class DispositivoController extends Controller
     public function obtenerDispositivosSegunModelo($modelo_id) 
     {
         $dispositivos = Dispositivo::select('dispositivos.dispositivo_id',
-                                                 'dispositivos.dispositivo_nombre',
-                                                  'modelos.modelo_nombre', 'marcas.marca_nombre')
+                                                 'dispositivos.dispositivo_nombre', 'dispositivos.modelo_id', 'marcas.marca_id',
+                                                  'dispositivos.bodega_id','modelos.modelo_nombre', 'marcas.marca_nombre')
                                                  ->join('modelos', 'dispositivos.modelo_id', '=', 'modelos.modelo_id')
                                                  ->join('marcas', 'modelos.marca_id', '=', 'marcas.marca_id')
                                                  ->where('modelos.modelo_id', $modelo_id)
@@ -42,8 +42,8 @@ class DispositivoController extends Controller
     public function obtenerDispositivosSegunMarca($marca_id) 
     {
         $dispositivos = Dispositivo::select('dispositivos.dispositivo_id',
-                                                 'dispositivos.dispositivo_nombre',
-                                                  'modelos.modelo_nombre', 'marcas.marca_nombre')
+                                                 'dispositivos.dispositivo_nombre', 'dispositivos.modelo_id', 'marcas.marca_id',
+                                                  'dispositivos.bodega_id','modelos.modelo_nombre', 'marcas.marca_nombre')
                                                  ->join('modelos', 'dispositivos.modelo_id', '=', 'modelos.modelo_id')
                                                  ->join('marcas', 'modelos.marca_id', '=', 'marcas.marca_id')
                                                  ->where('marcas.marca_id', $marca_id)
@@ -61,8 +61,8 @@ class DispositivoController extends Controller
     public function obtenerDispositivosSegunBodega($bodega_id) 
     {
         $dispositivos = Dispositivo::select('dispositivos.dispositivo_id',
-                                                 'dispositivos.dispositivo_nombre',
-                                                  'modelos.modelo_nombre', 'marcas.marca_nombre')
+                                                 'dispositivos.dispositivo_nombre', 'dispositivos.modelo_id', 'marcas.marca_id',
+                                                  'dispositivos.bodega_id','modelos.modelo_nombre', 'marcas.marca_nombre')
                                                  ->join('modelos', 'dispositivos.modelo_id', '=', 'modelos.modelo_id')
                                                  ->join('marcas', 'modelos.marca_id', '=', 'marcas.marca_id')
                                                  ->where('dispositivos.bodega_id', $bodega_id)
